@@ -41,11 +41,15 @@ public class PartAdapter2 extends RecyclerView.Adapter<PartAdapter2.PartViewHold
         holder.textTitleDescriptionName.setText(filter.getDescription().getName());
         Glide.with(holder.itemView.getContext())
                 .load(filter.getImage())
+                .override(147, 126)
+                //.fitCenter()
+                .centerCrop()
+                .placeholder(R.drawable.ic_wallpaper_black_48dp)
+                .error(R.drawable.ic_visibility_off_black_48dp)
                 .into(holder.imagePart);
-        //holder.textPriceAmountValue.setText(filter.getPrice().getAmount());
-        //holder.textPriceCurrencyValue.setText(filter.getPrice().getCurrency());
-        //holder.textPriceAmount.setText("Стоимость");
-        //holder.textPriceCurrency.setText("Валюта");
+        holder.textCategory.setText(filter.getParentCategory().getName().concat(" / ").concat(filter.getCategory().getName()));
+        holder.textPrice.setText(filter.getPrice().getAmount().concat(" ").concat(filter.getPrice().getCurrency()));
+        holder.textLocation.setText(filter.getLocation().getCity());
     }
 
     @Override
@@ -54,19 +58,19 @@ public class PartAdapter2 extends RecyclerView.Adapter<PartAdapter2.PartViewHold
     }
 
     static class PartViewHolder extends RecyclerView.ViewHolder{
-
-        private TextView textTitleDescriptionName, textPriceAmount,
-                textPriceCurrency, textPriceAmountValue, textPriceCurrencyValue;
+        private TextView textTitleDescriptionName;
+        private TextView textCategory;
+        private TextView textPrice;
+        private TextView textLocation;
         private ImageView imagePart;
 
         public PartViewHolder(View itemView) {
             super(itemView);
             imagePart = itemView.findViewById(R.id.imagePart);
             textTitleDescriptionName = itemView.findViewById(R.id.textTitleDescriptionName);
-            //textPriceAmount = itemView.findViewById(R.id.textPriceAmount);
-            //textPriceCurrency = itemView.findViewById(R.id.textPriceCurrency);
-            //textPriceAmountValue = itemView.findViewById(R.id.textPriceAmountValue);
-            //textPriceCurrencyValue = itemView.findViewById(R.id.textPriceCurrencyValue);
+            textCategory = itemView.findViewById(R.id.textCategory);
+            textPrice = itemView.findViewById(R.id.textPrice);
+            textLocation = itemView.findViewById(R.id.textLocation);
         }
     }
 

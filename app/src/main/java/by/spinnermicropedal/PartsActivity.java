@@ -80,7 +80,8 @@ public class PartsActivity extends AppCompatActivity {
                         partAdapter.setFilters(filters);
                         for (Filter filter : filters){
                             //Log.e("ID", filter.getDescription().getName());
-                            Log.e("ID", filter.getCategory().getName());
+                            //Log.e("ID", filter.getCategory().getName());
+                            Log.e("PROBLEM", filter.getParentCategory().getName());
                         }
                     }
 

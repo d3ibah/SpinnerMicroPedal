@@ -2,6 +2,8 @@ package by.spinnermicropedal.internet.get;
 
 
 
+import com.google.gson.annotations.SerializedName;
+
 import by.spinnermicropedal.internet.get.filter.CarManufacture;
 import by.spinnermicropedal.internet.get.filter.CarModel;
 import by.spinnermicropedal.internet.get.filter.Category;
@@ -26,6 +28,7 @@ public class Filter {
     private Description description;
     private Price price;
     private Integer carCompCount;
+    @SerializedName("parent_category")
     private ParentCategory parentCategory;
     private Category category;
     private CarManufacture carManufacture;

@@ -1,5 +1,7 @@
 package by.spinnermicropedal.internet.get.filter;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Home911 on 14.12.2017.
  */
@@ -8,6 +10,7 @@ public class ParentCategory {
 
     private String id;
     private String name;
+    @SerializedName("required_car")
     private String required_car;
     private String image;
 
