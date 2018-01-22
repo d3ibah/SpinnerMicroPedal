@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="13dp"
+    android:paddingRight="13dp"
+    android:paddingTop="13dp">
+
+    <ImageView
+        android:id="@+id/imageFragmentPart"
+        android:layout_width="360dp"
+        android:layout_height="270dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter"/>
+
+    <ImageView
+        android:id="@+id/imageFragmentManufacture"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/imageFragmentPart"
+        android:layout_below="@+id/imageFragmentPart"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="26dp"
+        android:scaleType="fitCenter"/>
+
+    <TextView
+        android:id="@+id/textViewFragmentManufacture"
+        android:layout_width="130dp"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/textViewFragmentDescriptionName"
+        android:layout_alignTop="@+id/imageFragmentManufacture"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="26dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textViewFragmentModel"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/textViewFragmentManufacture"
+        android:layout_below="@+id/textViewFragmentManufacture" />
+
+    <TextView
+        android:id="@+id/textViewFragmentYears"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/textViewFragmentModel"
+        android:layout_below="@+id/textViewFragmentModel" />
+
+    <TextView
+        android:id="@+id/textViewFragmentDescriptionName"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/textViewFragmentYears"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp" />
+
+    <TextView
+        android:id="@+id/textViewFragmentDescriptionManufacture"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/textViewFragmentDescriptionName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp" />
+
+    <TextView
+        android:id="@+id/textViewFragmentAuctionPlusPrice"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/textViewFragmentDescriptionManufacture"
+        android:layout_below="@+id/textViewFragmentDescriptionManufacture"
+        android:layout_marginTop="13dp" />
+
+    <TextView
+        android:id="@+id/textViewFragmentLocation"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/textViewFragmentAuctionPlusPrice"
+        android:layout_below="@+id/textViewFragmentAuctionPlusPrice"
+        android:layout_marginTop="13dp" />
+
+</RelativeLayout>

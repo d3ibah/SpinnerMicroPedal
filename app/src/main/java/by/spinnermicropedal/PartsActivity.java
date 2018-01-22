@@ -1,5 +1,7 @@
 package by.spinnermicropedal;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +9,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,6 +36,9 @@ public class PartsActivity extends AppCompatActivity {
     private List<Filter> filtersList;
     private RecyclerView recyclerView;
     private PartAdapter2 partAdapter;
+    private FrameLayout containerFragment;
+
+
 
 
     @Override
@@ -41,6 +48,7 @@ public class PartsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_parts);
         Intent intent = getIntent();
 
+        //containerFragment = findViewById(R.id.containerFragment);
         recyclerView = findViewById(R.id.recyclerViewParts);
         restService = RestService.getInstanse();
         textStateFilter = findViewById(R.id.textStateFilter);
@@ -76,12 +84,58 @@ public class PartsActivity extends AppCompatActivity {
                 .subscribeWith(new DisposableObserver<List<Filter>>() {
                     @Override
                     public void onNext(List<Filter> filters) {
-                        partAdapter = new PartAdapter2();
+                        partAdapter = new PartAdapter2(new PartAdapter2.ClickListenner() {
+                            @Override
+                            public void onClick(Filter filter) {
+
+                                String urlPart, urlManufacture, nameManufacture, nameModel, stringYears, namePart, namePartManufacture, stringPrice, stringLocation;
+                                boolean isAuction;
+
+                                Intent intent = new Intent(PartsActivity.this, FragmentPartActivity.class);
+
+                                urlPart = filter.getImage();
+                                urlManufacture = filter.getCarManufacture().getImage();
+                                nameManufacture = filter.getCarManufacture().getName();
+                                nameModel = filter.getCarModel().getName();
+                                stringYears = filter.getCarModel().getYears();
+                                namePart = filter.getDescription().getName();
+                                namePartManufacture = filter.getDescription().getManufacture();
+                                isAuction = filter.getAuction();
+                                stringPrice = filter.getPrice().getAmount().concat(" ").concat(filter.getPrice().getCurrency());
+                                stringLocation = filter.getLocation().getCity().concat(" ").concat(filter.getLocation().getCity());
+
+
+                                intent.putExtra("urlManufacture", urlManufacture);
+                                intent.putExtra("urlPart", urlPart);
+                                intent.putExtra("nameManufacture", nameManufacture);
+                                intent.putExtra("nameModel", nameModel);
+                                intent.putExtra("stringYears", stringYears);
+                                intent.putExtra("namePart", namePart);
+                                intent.putExtra("namePartManufacture", namePartManufacture);
+                                intent.putExtra("isAuction", isAuction);
+                                intent.putExtra("stringPrice", stringPrice);
+                                intent.putExtra("stringLocation", stringLocation);
+                                //Log.e("AAAAAAA", urlPart);
+                                startActivity(intent);
+
+
+                                /*FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                FragmentParts fragmentParts = new FragmentParts();
+                                containerFragment.setVisibility(View.VISIBLE);
+                                fragmentTransaction.add(R.id.containerFragment, fragmentParts);
+                                Log.e("onClick", "below commit transaction");
+                                fragmentTransaction.commit();*/
+
+                                Log.e("onClick", "after commit transaction");
+                            }
+                        });
                         partAdapter.setFilters(filters);
                         for (Filter filter : filters){
                             //Log.e("ID", filter.getDescription().getName());
                             //Log.e("ID", filter.getCategory().getName());
-                            Log.e("PROBLEM", filter.getParentCategory().getName());
+                            //Log.e("PROBLEM", filter.getParentCategory().getName());
+                            String log = String.valueOf(filter.getDescription().getNews());
+                            Log.e("isNews", log);
                         }
                     }
 
@@ -106,10 +160,16 @@ public class PartsActivity extends AppCompatActivity {
                 .subscribeWith(new DisposableObserver<List<Filter>>() {
                     @Override
                     public void onNext(List<Filter> filters) {
-                        partAdapter = new PartAdapter2();
+                        partAdapter = new PartAdapter2(new PartAdapter2.ClickListenner() {
+                            @Override
+                            public void onClick(Filter filter) {
+
+                            }
+                        });
                         partAdapter.setFilters(filters);
                         for (Filter filter : filters){
-                            //Log.e("id model", filter.getCarModel().getName());
+                            String log = String.valueOf(filter.getDescription().getNews());
+                            Log.e("isNews", log);
                         }
                     }
 

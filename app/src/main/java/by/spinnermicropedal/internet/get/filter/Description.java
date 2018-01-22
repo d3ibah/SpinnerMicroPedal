@@ -1,6 +1,8 @@
 package by.spinnermicropedal.internet.get.filter;
 
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by Home911 on 14.12.2017.
  */
@@ -8,6 +10,7 @@ package by.spinnermicropedal.internet.get.filter;
 public class Description {
 
     private String name;
+    @SerializedName("is_news")
     private Boolean isNews;
     private String manufacture;
 

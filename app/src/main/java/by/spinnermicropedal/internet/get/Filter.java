@@ -31,7 +31,9 @@ public class Filter {
     @SerializedName("parent_category")
     private ParentCategory parentCategory;
     private Category category;
+    @SerializedName("car_manufacture")
     private CarManufacture carManufacture;
+    @SerializedName("car_model")
     private CarModel carModel;
 
     public String getId() {
