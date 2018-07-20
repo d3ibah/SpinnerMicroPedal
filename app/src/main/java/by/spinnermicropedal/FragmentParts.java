@@ -1,7 +1,6 @@
 package by.spinnermicropedal;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.MultiTransformation;
+import com.bumptech.glide.request.RequestOptions;
+
+import jp.wasabeef.glide.transformations.CropTransformation;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
  * Created by Home911 on 04.01.2018.
@@ -21,8 +25,10 @@ import com.bumptech.glide.Glide;
 public class FragmentParts extends Fragment {
 
     private ImageView imagePart, imageManufacture;
-    private TextView textViewManunufacture, textViewModel, textViewYears, textViewDescriprionName, textViewDescriptionManufacture, textViewAuctionPlusPrice, textViewLocation;
-    private String urlImagePart, urlImageManufacture,textManunufacture, textModel, textYears, textDescriprionName, textDescriptionManufacture, textAuctionPlusPrice, textLocation;
+    private TextView textViewManunufacture, textViewModel, textViewYears, textViewDescriprionName,
+            textViewDescriptionManufacture, textViewAuctionPlusPrice, textViewLocation;
+    private String urlImagePart, urlImageManufacture,textManunufacture, textModel, textYears,
+            textDescriprionName, textDescriptionManufacture, textAuctionPlusPrice, textLocation;
 
 
     @Nullable
@@ -49,16 +55,28 @@ public class FragmentParts extends Fragment {
         textViewAuctionPlusPrice = view.findViewById(R.id.textViewFragmentAuctionPlusPrice);
         textViewLocation = view.findViewById(R.id.textViewFragmentLocation);
 
+        MultiTransformation multiTransformation = new MultiTransformation(
+                new CropTransformation(360, 270, CropTransformation.CropType.CENTER),
+                new RoundedCornersTransformation(5, 0));
+
+
+
         Glide.with(this)
                 .load(urlImagePart)
-                .centerCrop()
-                .error(R.drawable.ic_visibility_off_black_48dp)
+                //.centerCrop()
+                //.error(R.drawable.ic_visibility_off_black_48dp)
+                .apply(RequestOptions.bitmapTransform(multiTransformation))
                 .into(imagePart);
+
+        MultiTransformation multiTransformation1 = new MultiTransformation(
+                new CropTransformation(50, 50, CropTransformation.CropType.CENTER),
+                new RoundedCornersTransformation(5, 0));
 
         Glide.with(this)
                 .load(urlImageManufacture)
-                .centerCrop()
-                .error(R.drawable.ic_visibility_off_black_48dp)
+                //.centerCrop()
+                //.error(R.drawable.ic_visibility_off_black_48dp)
+                .apply(RequestOptions.bitmapTransform(multiTransformation1))
                 .into(imageManufacture);
 
         textViewManunufacture.setText(textManunufacture);
@@ -68,12 +86,6 @@ public class FragmentParts extends Fragment {
         textViewDescriptionManufacture.setText(textDescriptionManufacture);
         textViewAuctionPlusPrice.setText(textAuctionPlusPrice);
         textViewLocation.setText(textLocation);
-
-        //Bundle bundle = getArguments();
-        //textManunufacture.setText(bundle.getString("nameManufacture"));
-        //textLocation.setText("Text location");
-        //huj();
-        //textManunufacture.setText(urlImagePart);
 
         Log.e("---------", "2 onViewCreated");
     }
@@ -114,26 +126,5 @@ public class FragmentParts extends Fragment {
         this.textLocation = textLocation;
     }
 
-    /*    public String addImagePart(String textImagePart){
-        this.urlImagePart = textImagePart;
-        Log.e("addImagePart", textImagePart);
-        Log.e("---------", "3 addImagePart");
-//        textManunufacture.setText("Sss");
-//        textManunufacture.setText(textImagePart);
-*//*        Glide.with(this)
-                .load(textImagePart)
-                .into(imagePart);*//*
-        return textImagePart;
-    }
 
-    public void addImageManufacture(String textImageManufacture){
-        textManunufacture.setText(textImageManufacture);
-*//*        Glide.with(this)
-                .load(textImageManufacture)
-                .into(imageManufacture);*//*
-    }
-
-    private void huj(){
-        textYears.setText("Text YEAR HUJJJJ!!!");
-    }*/
 }

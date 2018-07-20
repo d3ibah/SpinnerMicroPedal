@@ -56,11 +56,11 @@ public class PartAdapter extends RecyclerView.Adapter<PartAdapter.PartViewHolder
         holder.textTitleDescriptionName.setText(filter.getDescription().getName());
         Glide.with(holder.itemView.getContext())
                 .load(filter.getImage())
-                .override(147, 25)
+               /* .override(147, 25)
                 .fitCenter()
                 .centerCrop()
                 .placeholder(R.drawable.ic_wallpaper_black_48dp)
-                .error(R.drawable.ic_visibility_off_black_48dp)
+                .error(R.drawable.ic_visibility_off_black_48dp)*/
                 .into(holder.imagePart);
         holder.textCategory.setText(filter.getCategory().getName());
         holder.textPrice.setText(filter.getPrice().getAmount());

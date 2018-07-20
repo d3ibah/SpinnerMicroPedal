@@ -38,6 +38,9 @@ public class PartsActivity extends AppCompatActivity {
     private PartAdapter2 partAdapter;
     private FrameLayout containerFragment;
 
+    // Proverka!!
+    // fg
+
 
 
 
@@ -88,7 +91,8 @@ public class PartsActivity extends AppCompatActivity {
                             @Override
                             public void onClick(Filter filter) {
 
-                                String urlPart, urlManufacture, nameManufacture, nameModel, stringYears, namePart, namePartManufacture, stringPrice, stringLocation;
+                                String urlPart, urlManufacture, nameManufacture, nameModel,
+                                        stringYears, namePart, namePartManufacture, stringPrice, stringLocation;
                                 boolean isAuction;
 
                                 Intent intent = new Intent(PartsActivity.this, FragmentPartActivity.class);

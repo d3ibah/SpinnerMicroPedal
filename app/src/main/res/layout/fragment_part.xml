@@ -1,83 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="13dp"
-    android:paddingRight="13dp"
-    android:paddingTop="13dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="15dp">
 
-    <ImageView
-        android:id="@+id/imageFragmentPart"
-        android:layout_width="360dp"
-        android:layout_height="270dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:scaleType="fitCenter"/>
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageFragmentManufacture"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignStart="@+id/imageFragmentPart"
-        android:layout_below="@+id/imageFragmentPart"
-        android:layout_marginTop="13dp"
-        android:layout_marginLeft="26dp"
-        android:scaleType="fitCenter"/>
+        <ImageView
+            android:id="@+id/imageFragmentPart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintDimensionRatio="4:3"
+            android:layout_margin="13dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textViewFragmentManufacture"
-        android:layout_width="130dp"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/textViewFragmentDescriptionName"
-        android:layout_alignTop="@+id/imageFragmentManufacture"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="26dp"
-        android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/imageFragmentManufacture"
+            android:layout_width="62dp"
+            android:layout_height="62dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="26dp"
+            android:scaleType="fitCenter"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/imageFragmentPart" />
 
-    <TextView
-        android:id="@+id/textViewFragmentModel"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/textViewFragmentManufacture"
-        android:layout_below="@+id/textViewFragmentManufacture" />
+        <TextView
+            android:id="@+id/textViewFragmentManufacture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/imageFragmentPart" />
 
-    <TextView
-        android:id="@+id/textViewFragmentYears"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/textViewFragmentModel"
-        android:layout_below="@+id/textViewFragmentModel" />
+        <TextView
+            android:id="@+id/textViewFragmentModel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFragmentManufacture" />
 
-    <TextView
-        android:id="@+id/textViewFragmentDescriptionName"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/textViewFragmentYears"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp" />
+        <TextView
+            android:id="@+id/textViewFragmentYears"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFragmentModel" />
 
-    <TextView
-        android:id="@+id/textViewFragmentDescriptionManufacture"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/textViewFragmentDescriptionName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="13dp" />
+        <TextView
+            android:id="@+id/textViewFragmentDescriptionName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            app:layout_constraintBottom_toTopOf="@+id/textViewFragmentDescriptionManufacture"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFragmentYears"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
 
-    <TextView
-        android:id="@+id/textViewFragmentAuctionPlusPrice"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/textViewFragmentDescriptionManufacture"
-        android:layout_below="@+id/textViewFragmentDescriptionManufacture"
-        android:layout_marginTop="13dp" />
+        <TextView
+            android:id="@+id/textViewFragmentDescriptionManufacture"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/textViewFragmentAuctionPlusPrice"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFragmentDescriptionName" />
 
-    <TextView
-        android:id="@+id/textViewFragmentLocation"
-        android:layout_width="200dp"
-        android:layout_height="30dp"
-        android:layout_alignStart="@+id/textViewFragmentAuctionPlusPrice"
-        android:layout_below="@+id/textViewFragmentAuctionPlusPrice"
-        android:layout_marginTop="13dp" />
+        <TextView
+            android:id="@+id/textViewFragmentAuctionPlusPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/textViewFragmentLocation"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFragmentDescriptionManufacture" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textViewFragmentLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/textViewFragmentAuctionPlusPrice" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.29" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         intent = new Intent(MainActivity.this, PartsActivity.class);
 
         restService = RestService.getInstanse();
-        restService.getRestApi().getManufactures();
+        //restService.getRestApi().getManufactures();
 
         spinner = findViewById(R.id.spinner);
         //spinner.setVisibility(View.GONE);

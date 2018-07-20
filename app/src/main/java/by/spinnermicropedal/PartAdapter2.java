@@ -13,11 +13,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.MultiTransformation;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import by.spinnermicropedal.internet.get.Filter;
+import jp.wasabeef.glide.transformations.CropTransformation;
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 /**
  * Created by Home911 on 18.12.2017.
@@ -58,13 +62,17 @@ public class PartAdapter2 extends RecyclerView.Adapter<PartAdapter2.PartViewHold
         Filter filter = filters.get(position);
         Log.e("ID", "oBVH " + String.valueOf(filter));
         holder.textTitleDescriptionName.setText(filter.getDescription().getName());
+        MultiTransformation multiTransformation = new MultiTransformation(
+                new CropTransformation(140, 140, CropTransformation.CropType.CENTER),
+                new RoundedCornersTransformation(5, 0));
         Glide.with(holder.itemView.getContext())
                 .load(filter.getImage())
                 //.override(160, 120)
                 //.fitCenter()
-                .centerCrop()
-                .placeholder(R.drawable.ic_wallpaper_black_48dp)
-                .error(R.drawable.ic_visibility_off_black_48dp)
+                //.centerCrop()
+                //.placeholder(R.drawable.ic_wallpaper_black_48dp)
+                //.error(R.drawable.ic_visibility_off_black_48dp)
+                .apply(RequestOptions.bitmapTransform(multiTransformation))
                 .into(holder.imagePart);
         //holder.textCategory.setText(filter.getParentCategory().getName().concat(" / ").concat(filter.getCategory().getName()));
         holder.textPrice.setText(filter.getPrice().getAmount().concat(" ").concat(filter.getPrice().getCurrency()));
